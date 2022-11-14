@@ -1,0 +1,44 @@
+:root {
+  --primary: #d9e5f2;
+  --secondary: #505559;
+  --accent: #3f638b;
+  --background: #1b1c1d;
+  --square: 3rem;
+  --space: calc(var(--square) / 6);
+  --radius: calc(var(--space) / 2);
+  --monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--primary);
+  font-family: var(--monospace);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#container {
+  display: grid;
+  grid: auto-flow / repeat(16, 1fr);
+  gap: var(--space);
+}
+
+#container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--secondary);
+  border-radius: var(--radius);
+  height: var(--square);
+  width: var(--square);
+  transition: background 0.2s;
+}
+
+#container > div:hover {
+  background: var(--accent);
+  cursor: pointer;
+}
