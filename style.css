@@ -1,6 +1,5 @@
 :root {
   --primary: #d9e5f2;
-  --primary: rgb(217, 229, 242);
   --background-light: #50555950;
   --background: #1b1c1d;
   --container: 960px;
@@ -31,11 +30,7 @@ body {
 #container > div {
   border-radius: var(--space);
   background: var(--background-light);
-  transition: background 0.25s;
-}
-
-#container > .active {
-  background: var(--primary);
+  transition: background 0.5s;
 }
 
 /* Button */
