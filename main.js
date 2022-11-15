@@ -4,7 +4,6 @@ const changeGridButton = document.getElementById("change-grid");
 function createGrid(size) {
   for (i = 1; i <= size * size; i++) {
     const div = document.createElement("div");
-    // div.textContent = i;
     container.appendChild(div);
     container.style.grid = `auto-flow / repeat(${size}, 1fr)`;
     div.addEventListener("mouseenter", () => {
