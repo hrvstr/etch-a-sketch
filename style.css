@@ -31,12 +31,11 @@ body {
 #container > div {
   border-radius: var(--space);
   background: var(--background-light);
-  transition: background 0.25s, box-shadow 0.5s;
+  transition: background 0.25s;
 }
 
 #container > .active {
   background: var(--primary);
-  box-shadow: rgba(217, 229, 242, 0.25) 0px 0px 10px 0px;
 }
 
 /* Button */
