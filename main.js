@@ -4,7 +4,7 @@ const changeGridButton = document.getElementById("change-grid");
 function createGrid(size) {
   for (i = 1; i <= size * size; i++) {
     const div = document.createElement("div");
-    div.textContent = i;
+    // div.textContent = i;
     container.appendChild(div);
     container.style.grid = `auto-flow / repeat(${size}, 1fr)`;
     div.addEventListener("mouseenter", () => {
@@ -23,7 +23,7 @@ function removeGrid() {
 changeGridButton.addEventListener("click", () => {
   // Get & check user input
   let userInput = prompt("How many square per side?", 16);
-  if (isNaN(userInput)) {
+  if (isNaN(userInput) || !userInput) {
     alert("Please supply a number from 1 to 100.");
   } else if (userInput > 100) {
     alert("Number should not be larger than 100");

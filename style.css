@@ -35,7 +35,7 @@ body {
   align-items: center;
   background: var(--secondary);
   font-family: var(--monospace);
-  color: #00000075;
+  color: #000000;
   font-size: 12px;
   font-weight: bold;
   height: var(--square);
