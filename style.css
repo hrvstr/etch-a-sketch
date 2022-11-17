@@ -1,6 +1,7 @@
 :root {
   --primary: #d9e5f2;
-  --background-light: #50555950;
+  --secondary: #505559;
+  --pixel: #242424;
   --background: #1b1c1d;
   --container: 960px;
   --space: 2px;
@@ -11,46 +12,132 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: var(--background);
   color: var(--primary);
-  display: flex;
   height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-
-/* Square grid */
 
 #container {
   display: grid;
   grid: auto-flow / repeat(16, 1fr);
   gap: var(--space);
   width: var(--container);
+  min-width: var(--container);
   height: var(--container);
 }
 
 #container > div {
   border-radius: var(--space);
-  background: var(--background-light);
+  background: var(--pixel);
   transition: background 0.5s;
 }
 
-/* Button */
+/* Buttons */
+
+#actions {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
 
 button {
   all: unset;
   cursor: pointer;
-  position: absolute;
-  background: #5e5ce6;
-  border-bottom-left-radius: 0.5rem;
+  border-radius: 0.25rem;
+  background: var(--secondary);
   color: white;
-  top: 0;
-  right: 0;
   font-weight: 600;
   line-height: 1;
-  padding: 0.5rem;
-  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-  transition: background 0.25s;
+  padding: 0.5rem 1rem;
 }
 
-button:hover {
-  background: hsl(241, 73%, 60%);
+.button-green {
+  background: #27c21f;
+}
+
+.button-red {
+  background: #ff4545;
+}
+
+/* Change grid */
+
+#gridOverlay {
+  position: absolute;
+  background: #00000050;
+  backdrop-filter: blur(5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: none;
+}
+
+#gridValue {
+  font-family: ui-monospace;
+  background: #50555975;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+}
+
+input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 12rem;
+  height: 7px;
+  background: #505559;
+  border-radius: 5px;
+  background-size: 70% 100%;
+  background-repeat: no-repeat;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #505559;
+  cursor: ew-resize;
+  transition: background 0.3s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+/* Mobile View */
+
+@media screen and (max-width: 960px) {
+  #container {
+    min-width: unset;
+    width: calc(var(--container) / 2);
+    height: calc(var(--container) / 2);
+    gap: calc(var(--space) / 2);
+  }
+
+  #container > div {
+    border-radius: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #container {
+    min-width: unset;
+    width: calc(var(--container) / 4);
+    height: calc(var(--container) / 4);
+    gap: 0;
+  }
 }

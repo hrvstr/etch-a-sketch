@@ -6,10 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <title>Etch-a-sketch</title>
+    <title>🎨 Etch-a-sketch</title>
   </head>
   <body>
-    <button id="change-grid">grid size</button>
+    <div id="gridOverlay">
+      <!-- <input type="number" id="gridInput" /> -->
+      <output id="gridValue"></output>
+      <input
+        type="range"
+        name=""
+        id="gridInput"
+        min="1"
+        max="100"
+        oninput="gridValue.value=calculateGrid(value)"
+      />
+      <div class="button-group">
+        <button id="gridApply" class="button-green">Apply</button>
+        <button
+          id="grid-cancel"
+          class="button-red"
+          onclick="toggleChangeGridOverlay()"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+    <div id="actions">
+      <button id="grid" onclick="toggleChangeGridOverlay()">Change Grid</button>
+      <button id="clear" class="button-red">Clear Artboard</button>
+    </div>
     <div id="container"></div>
     <script src="main.js"></script>
   </body>
