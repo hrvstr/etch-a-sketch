@@ -14,41 +14,50 @@
       <output id="gridValue"></output>
       <input
         type="range"
-        name=""
+        name="gridInput"
         id="gridInput"
         min="1"
         max="100"
+        value="16"
         oninput="gridValue.value=calculateGrid(value)"
       />
       <div>
-        <button id="gridApply" class="button-green">Apply</button>
+        <button id="gridApply" class="background-green">Apply</button>
         <button
           id="grid-cancel"
-          class="button-red"
+          class="background-red"
           onclick="toggleChangeGridOverlay()"
         >
           Cancel
         </button>
       </div>
     </div>
-    <div id="color">
-      <label for="colorPicker"
-        >Color <input type="color" id="colorPicker"
-      /></label>
-      <label for="randomColor"
-        ><input type="checkbox" name="randomColor" id="randomColor" />
-        Random</label
-      >
+    <div id="tools">
+      <button id="colorModeButton">Color</button>
+      <div class="separator"></div>
+      <input type="color" id="colorPicker" class="hidden" />
+      <label for="randomColor" id="randomColorLabel">
+        <input
+          type="checkbox"
+          name="randomColor"
+          id="randomColor"
+          class="hidden"
+        />
+        Random
+      </label>
     </div>
     <div id="actions">
+      <div id="drawModeIndicator" class="hidden background-green"></div>
+      <div id="drawModeSeparator" class="separator hidden"></div>
+      <button id="help" class="hidden">Help</button>
       <button id="grid" onclick="toggleChangeGridOverlay()">Change Grid</button>
-      <button id="clear" class="button-red">Clear Artboard</button>
+      <button id="clear" class="background-red">Clear Artboard</button>
     </div>
+    <div id="drawModeIndicator" class="hidden background-green"></div>
     <div id="info">
       <div id="status"></div>
-      <div id="instructions">
-        Click on the square and move the cursor to draw.
-      </div>
+      <div id="instructions"></div>
+      <button id="infoClose">Hide</button>
     </div>
     <div id="container"></div>
     <footer>Etch a sketch. Build by Richard Muhler. © 2022</footer>
