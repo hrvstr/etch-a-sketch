@@ -1,6 +1,8 @@
 :root {
   --primary: #d9e5f2;
   --secondary: #505559;
+  --green: #27c21f;
+  --red: #ff4545;
   --pixel: #242424;
   --background: #1b1c1d;
   --container: 960px;
@@ -14,8 +16,14 @@ body {
   color: var(--primary);
   height: 100vh;
   display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.hidden {
+  display: none !important;
 }
 
 #container {
@@ -33,11 +41,24 @@ body {
   transition: background 0.5s;
 }
 
+#info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#status {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
 /* Buttons */
 
 #actions {
   position: absolute;
   display: flex;
+  justify-content: center;
   align-items: center;
   top: 0.5rem;
   right: 0.5rem;
@@ -57,11 +78,11 @@ button {
 }
 
 .button-green {
-  background: #27c21f;
+  background: var(--green);
 }
 
 .button-red {
-  background: #ff4545;
+  background: var(--red);
 }
 
 /* Change grid */
@@ -70,6 +91,7 @@ button {
   position: absolute;
   background: #00000050;
   backdrop-filter: blur(5rem);
+  -webkit-backdrop-filter: blur(5rem);
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -77,7 +99,6 @@ button {
   align-items: center;
   width: 100%;
   height: 100vh;
-  display: none;
 }
 
 #gridValue {
@@ -105,7 +126,7 @@ input[type="range"]::-webkit-slider-thumb {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  background: #505559;
+  background: var(--primary);
   cursor: ew-resize;
   transition: background 0.3s ease-in-out;
 }

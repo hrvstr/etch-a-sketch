@@ -1,6 +1,8 @@
 // Nodes
 const container = document.getElementById("container");
 const clearGridButton = document.getElementById("clear");
+const instructions = document.getElementById("instructions");
+const drawModeStatusDisplay = document.getElementById("status");
 
 // Change grid
 const gridButton = document.getElementById("grid");
@@ -12,9 +14,12 @@ const changeGridButton = document.getElementById("gridApply");
 // CSS Vars
 const bodyStyle = getComputedStyle(document.body);
 const backgroundLight = bodyStyle.getPropertyValue("--background-light");
+const green = bodyStyle.getPropertyValue("--green");
+const red = bodyStyle.getPropertyValue("--red");
 
 // Defaults
 const defaultGridSize = 16;
+let drawModeIsActive = false;
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -28,16 +33,19 @@ function getRandomColor(brightness) {
 }
 
 function createGrid(size) {
+  container.style.grid = `auto-flow / repeat(${size}, 1fr)`;
   for (i = 1; i <= size * size; i++) {
     const div = document.createElement("div");
     container.appendChild(div);
     let brightness = 50;
+
     div.addEventListener("mouseenter", () => {
-      brightness += 10;
-      div.style.background = getRandomColor(brightness);
+      if (drawModeIsActive) {
+        brightness += 10;
+        div.style.background = getRandomColor(brightness);
+      }
     });
   }
-  container.style.grid = `auto-flow / repeat(${size}, 1fr)`;
 }
 
 function removeGrid() {
@@ -52,12 +60,27 @@ function calculateGrid(value) {
 }
 
 function toggleChangeGridOverlay() {
-  if (changeGridOverlay.style.display == "none") {
-    changeGridOverlay.style.display = "flex";
+  changeGridOverlay.classList.toggle("hidden");
+}
+
+function changeDrawModeInfo() {
+  if (drawModeIsActive) {
+    drawModeStatusDisplay.style.color = green;
+    drawModeStatusDisplay.textContent = "Drawing enabled.";
+    instructions.textContent = "Click the square to stop drawing.";
   } else {
-    changeGridOverlay.style.display = "none";
+    drawModeStatusDisplay.style.color = red;
+    drawModeStatusDisplay.textContent = "Drawing disabled.";
+    instructions.textContent =
+      "Click on the square and move the cursor to start drawing.";
   }
 }
+
+// Toggle draw mode when clicking on the container
+container.addEventListener("click", () => {
+  drawModeIsActive = !drawModeIsActive;
+  changeDrawModeInfo();
+});
 
 // Clear artboard
 clearGridButton.addEventListener("click", () => {
@@ -69,14 +92,17 @@ clearGridButton.addEventListener("click", () => {
 
 // Change grid size
 changeGridButton.addEventListener("click", () => {
-  changeGridOverlay.style.display = "none";
+  changeGridOverlay.classList.toggle("hidden");
   removeGrid();
   createGrid(gridInput.value);
 });
 
-// Set initial values in
+// Set initial values
 changeGridInput.value = defaultGridSize;
 changeGridValue.value = calculateGrid(defaultGridSize);
+// instructions.textContent =
+//   "Click on the square and move the cursor to start drawing.";
+changeDrawModeInfo();
 
 // Create initial grid
 createGrid(defaultGridSize);

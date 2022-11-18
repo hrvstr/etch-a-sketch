@@ -9,8 +9,8 @@
     <title>🎨 Etch-a-sketch</title>
   </head>
   <body>
-    <div id="gridOverlay">
-      <!-- <input type="number" id="gridInput" /> -->
+    <div id="gridOverlay" class="hidden">
+      <p>Move the slider to adjust the resolution of the artboard.</p>
       <output id="gridValue"></output>
       <input
         type="range"
@@ -20,7 +20,7 @@
         max="100"
         oninput="gridValue.value=calculateGrid(value)"
       />
-      <div class="button-group">
+      <div>
         <button id="gridApply" class="button-green">Apply</button>
         <button
           id="grid-cancel"
@@ -32,8 +32,15 @@
       </div>
     </div>
     <div id="actions">
+      <!-- <input type="color" /> -->
       <button id="grid" onclick="toggleChangeGridOverlay()">Change Grid</button>
       <button id="clear" class="button-red">Clear Artboard</button>
+    </div>
+    <div id="info">
+      <div id="status"></div>
+      <div id="instructions">
+        Click on the square and move the cursor to draw.
+      </div>
     </div>
     <div id="container"></div>
     <script src="main.js"></script>
