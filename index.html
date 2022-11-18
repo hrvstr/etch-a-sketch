@@ -31,8 +31,16 @@
         </button>
       </div>
     </div>
+    <div id="color">
+      <label for="colorPicker"
+        >Color <input type="color" id="colorPicker"
+      /></label>
+      <label for="randomColor"
+        ><input type="checkbox" name="randomColor" id="randomColor" />
+        Random</label
+      >
+    </div>
     <div id="actions">
-      <!-- <input type="color" /> -->
       <button id="grid" onclick="toggleChangeGridOverlay()">Change Grid</button>
       <button id="clear" class="button-red">Clear Artboard</button>
     </div>
@@ -43,6 +51,7 @@
       </div>
     </div>
     <div id="container"></div>
+    <footer>Etch a sketch. Build by Richard Muhler. © 2022</footer>
     <script src="main.js"></script>
   </body>
 </html>

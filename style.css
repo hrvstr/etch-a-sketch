@@ -1,9 +1,9 @@
 :root {
   --primary: #d9e5f2;
   --secondary: #505559;
+  --tertiary: #242424;
   --green: #27c21f;
   --red: #ff4545;
-  --pixel: #242424;
   --background: #1b1c1d;
   --container: 960px;
   --space: 2px;
@@ -37,7 +37,7 @@ body {
 
 #container > div {
   border-radius: var(--space);
-  background: var(--pixel);
+  background: var(--tertiary);
   transition: background 0.5s;
 }
 
@@ -51,6 +51,35 @@ body {
 #status {
   font-weight: bold;
   font-size: 1.25rem;
+}
+
+#color,
+#actions {
+  background: var(--tertiary);
+  border: 1px solid var(--secondary);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+/* Color */
+
+#color {
+  position: absolute;
+  padding: 0.5rem 1rem;
+  top: 0.5rem;
+  left: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
 }
 
 /* Buttons */
@@ -72,7 +101,7 @@ button {
   border-radius: 0.25rem;
   background: var(--secondary);
   color: white;
-  font-weight: 600;
+  font-weight: bold;
   line-height: 1;
   padding: 0.5rem 1rem;
 }
@@ -103,7 +132,7 @@ button {
 
 #gridValue {
   font-family: ui-monospace;
-  background: #50555975;
+  background: #00000050;
   padding: 0.5rem 1rem;
   font-size: 1.5rem;
   border-radius: 1rem;
@@ -137,6 +166,15 @@ input[type="range"]::-webkit-slider-runnable-track {
   box-shadow: none;
   border: none;
   background: transparent;
+}
+
+/* Footer */
+
+footer {
+  position: absolute;
+  bottom: 1rem;
+  font-size: 14px;
+  color: var(--secondary);
 }
 
 /* Mobile View */
