@@ -8,10 +8,10 @@ const drawModeStatusDisplay = document.getElementById("status");
 const drawModeIndicator = document.getElementById("drawModeIndicator");
 const drawModeSeparator = document.getElementById("drawModeSeparator");
 const drawModeStatusCloseButton = document.getElementById("infoClose");
-const colorPicker = document.getElementById("colorPicker");
-const randomColorCheckbox = document.getElementById("randomColor");
-const randomColorLabel = document.getElementById("randomColorLabel");
 const colorModeButton = document.getElementById("colorModeButton");
+const colorPicker = document.getElementById("colorPicker");
+const colorLabel = document.getElementById("colorLabel");
+const randomRange = document.getElementById("randomRange");
 
 // Change grid
 const gridButton = document.getElementById("grid");
@@ -40,8 +40,8 @@ changeGridValue.value = calculateGrid(defaultGridSize);
 
 // Color
 let currentColor = green;
+let randomColorMode = true;
 colorPicker.value = currentColor;
-randomColorCheckbox.checked = true;
 
 // Functions
 
@@ -50,7 +50,7 @@ function getRandomNumber(min, max) {
 }
 
 function getRandomColor(brightness) {
-  return `hsl(${getRandomNumber(225, 275)}, ${getRandomNumber(
+  return `hsl(${getRandomNumber(0, 360)}, ${getRandomNumber(
     50,
     100
   )}%, ${brightness}%)`;
@@ -64,15 +64,11 @@ function createGrid(size) {
     let brightness = 50;
     div.addEventListener("mouseenter", () => {
       if (drawModeIsActive) {
-        if (randomColorCheckbox.checked) {
+        if (randomColorMode) {
           brightness += 10;
           div.style.background = getRandomColor(brightness);
         } else {
-          if (brightness < 100) {
-            brightness += 10;
-          } else {
-          }
-          div.style.background = currentColor + brightness;
+          div.style.background = currentColor;
         }
       }
     });
@@ -120,8 +116,14 @@ function toggleDrawModeInfo() {
 // Toggle color mode
 colorModeButton.addEventListener("click", () => {
   colorPicker.classList.toggle("hidden");
-  randomColorLabel.classList.toggle("hidden");
-  randomColorCheckbox.checked = !randomColorCheckbox.checked;
+  colorModeButton.classList.toggle("background-green");
+  randomRange.classList.toggle("hidden");
+  if (randomColorMode == true) {
+    colorLabel.textContent = currentColor;
+  } else {
+    colorLabel.textContent = "";
+  }
+  randomColorMode = !randomColorMode;
 });
 
 // Toggle draw mode when clicking on the container
@@ -139,6 +141,7 @@ drawModeIndicator.addEventListener("click", toggleDrawModeInfo);
 // Change color
 colorPicker.addEventListener("input", () => {
   currentColor = colorPicker.value;
+  colorLabel.textContent = colorPicker.value;
 });
 
 // Change grid size

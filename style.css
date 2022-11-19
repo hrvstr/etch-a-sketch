@@ -42,36 +42,17 @@ body {
   transition: background 0.5s;
 }
 
-#info {
-  background: var(--tertiary);
-  border: 1px solid var(--secondary);
-  padding: 1rem 2rem;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#info button {
-  margin-top: 1rem;
-  right: 0;
-  top: 0;
-}
-
-#status {
-  font-weight: bold;
-  font-size: 1.25rem;
-}
-
 /* Toolbars */
 
 #tools,
-#actions {
+#actions,
+#info {
   background: var(--tertiary);
   border: 1px solid var(--secondary);
   padding: 0.5rem;
   border-radius: 0.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 #tools {
@@ -83,10 +64,6 @@ body {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-}
-
-#colorPicker {
-  margin-right: 0.25rem;
 }
 
 .separator {
@@ -139,16 +116,43 @@ button {
 
 .background-green {
   background: var(--green);
+  box-shadow: 0 0 0.5rem 0.25rem #27c21f35;
 }
 
 .background-red {
   background: var(--red);
+  box-shadow: 0 0 0.5rem 0.25rem #ff454535;
+}
+
+/* Info */
+
+#info {
+  /* background: var(--tertiary); */
+  /* border: 1px solid var(--secondary); */
+  padding: 1rem 2rem;
+  /* border-radius: 1rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#info button {
+  margin-top: 1rem;
+  right: 0;
+  top: 0;
+}
+
+#status {
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
 /* Change grid */
 
 #gridOverlay {
   position: absolute;
+  background: #00000025;
   backdrop-filter: blur(5rem);
   -webkit-backdrop-filter: blur(5rem);
   display: flex;
@@ -162,9 +166,11 @@ button {
 
 #gridValue {
   font-family: ui-monospace;
-  background: #00000050;
+  background: #ffffff10;
+  border: 1px solid var(--secondary);
   padding: 0.5rem 1rem;
   font-size: 1.5rem;
+  font-weight: 600;
   border-radius: 1rem;
 }
 
@@ -173,7 +179,7 @@ input[type="range"] {
   -webkit-appearance: none;
   width: 12rem;
   height: 7px;
-  background: #505559;
+  background: #ffffff50;
   border-radius: 5px;
   background-size: 70% 100%;
   background-repeat: no-repeat;
@@ -209,6 +215,16 @@ footer {
 /* Mobile View */
 
 @media screen and (max-width: 960px) {
+  body {
+    max-width: var(--container);
+  }
+
+  #tools,
+  #actions {
+    position: initial;
+    left: 0;
+  }
+
   #container {
     min-width: unset;
     width: calc(var(--container) / 2);
