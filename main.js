@@ -11,7 +11,7 @@ const drawModeStatusCloseButton = document.getElementById("infoClose");
 const colorModeButton = document.getElementById("colorModeButton");
 const colorPicker = document.getElementById("colorPicker");
 const colorLabel = document.getElementById("colorLabel");
-const randomRange = document.getElementById("randomRange");
+const colorSeparator = document.getElementById("colorSeparator");
 
 // Change grid
 const gridButton = document.getElementById("grid");
@@ -50,10 +50,9 @@ function getRandomNumber(min, max) {
 }
 
 function getRandomColor(brightness) {
-  return `hsl(${getRandomNumber(0, 360)}, ${getRandomNumber(
-    50,
-    100
-  )}%, ${brightness}%)`;
+  let hue = getRandomNumber(0, 360);
+  let sat = getRandomNumber(50, 100);
+  return `hsl(${hue}, ${sat}%, ${brightness}%)`;
 }
 
 function createGrid(size) {
@@ -115,13 +114,16 @@ function toggleDrawModeInfo() {
 
 // Toggle color mode
 colorModeButton.addEventListener("click", () => {
+  colorSeparator.classList.toggle("hidden");
+  colorLabel.classList.toggle("hidden");
   colorPicker.classList.toggle("hidden");
   colorModeButton.classList.toggle("background-green");
-  randomRange.classList.toggle("hidden");
   if (randomColorMode == true) {
     colorLabel.textContent = currentColor;
+    colorModeButton.style.opacity = 0.5;
   } else {
     colorLabel.textContent = "";
+    colorModeButton.style.opacity = 1;
   }
   randomColorMode = !randomColorMode;
 });

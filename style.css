@@ -45,8 +45,7 @@ body {
 /* Toolbars */
 
 #tools,
-#actions,
-#info {
+#actions {
   background: var(--tertiary);
   border: 1px solid var(--secondary);
   padding: 0.5rem;
@@ -127,10 +126,6 @@ button {
 /* Info */
 
 #info {
-  /* background: var(--tertiary); */
-  /* border: 1px solid var(--secondary); */
-  padding: 1rem 2rem;
-  /* border-radius: 1rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -222,7 +217,6 @@ footer {
   #tools,
   #actions {
     position: initial;
-    left: 0;
   }
 
   #container {
